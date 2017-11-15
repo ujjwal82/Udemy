@@ -44,7 +44,6 @@ summary(regressor)
 regressor = lm(formula = Profit ~ R.D.Spend
                , data = dataset)
 
-sum_regressor = summary(regressor)
-labels(sum_regressor$coefficients)
+summary(regressor)
 
-
+y_pred = predict(regressor, test_set)
