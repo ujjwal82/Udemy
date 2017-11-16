@@ -9,9 +9,9 @@ dataset = dataset[2:3]
 # Fitting the Random Forest Regression Model to the dataset
 # install.packages('randomForest')
 library(randomForest)
-set.seed(123)
+set.seed(1234)
 regressor <- randomForest(x = dataset[1] ,y = dataset$Salary
-                          , ntree = 300 )
+                          , ntree = 500 )
 
 # Predicting a new result
 y_pred = predict(regressor, data.frame(Level = 6.5))
