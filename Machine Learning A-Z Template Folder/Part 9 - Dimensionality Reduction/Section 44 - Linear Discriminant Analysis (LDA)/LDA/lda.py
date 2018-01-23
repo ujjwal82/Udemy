@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Teu Jan 23 09:30:46 2018
+Created on Teu Jan 23 14:03:46 2018
 
 @author: Ujjwal Kumar
 """
-# PCA
+# LDA
 
 
 # Importing the libraries
@@ -27,14 +27,11 @@ sc_X = StandardScaler()
 X_train = sc_X.fit_transform(X_train)
 X_test = sc_X.transform(X_test)
 
-# Applying PCA
-from sklearn.decomposition import PCA
-pca = PCA(n_components = 2)
-
-X_train = pca.fit_transform(X_train)
-X_test = pca.transform(X_test)
-
-explained_variance = pca.explained_variance_ratio_
+# Applying LCA
+from sklearn.discriminant_analysis import LinearDiscriminantAnalysis as LDA
+lca = LDA(n_components = 2)
+X_train = lca.fit_transform(X_train, y_train)
+X_test = lca.transform(X_test)
 
 
 # Fitting Logistic Regression to the Training set
@@ -64,8 +61,8 @@ for i, j in enumerate(np.unique(y_train)):
     plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c =ListedColormap(('red','green', 'blue'))(i), label = j)
 plt.title ('Logistic Regression (Training set)')
-plt.xlabel('PC1')
-plt.ylabel('PC2')
+plt.xlabel('LD1')
+plt.ylabel('LD2')
 plt.legend()
 plt.show()
 
@@ -84,8 +81,8 @@ for i, j in enumerate(np.unique(y_train)):
     plt.scatter(X_set[y_set == j, 0], X_set[y_set == j, 1],
                 c =ListedColormap(('red','green', 'blue'))(i), label = j)
 plt.title ('Logistic Regression (Test set)')
-plt.xlabel('PC1')
-plt.ylabel('PC2')
+plt.xlabel('LD1')
+plt.ylabel('LD2')
 plt.legend()
 plt.show()
 
